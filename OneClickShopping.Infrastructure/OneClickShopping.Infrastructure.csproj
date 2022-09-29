@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Email\" />
+    <Folder Include="Sms\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OneClickShopping.Application\OneClickShopping.Application.csproj" />
+  </ItemGroup>
+
 </Project>
