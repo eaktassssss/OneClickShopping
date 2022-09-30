@@ -10,4 +10,10 @@
     <ProjectReference Include="..\OneClickShopping.Application\OneClickShopping.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Repositories\Order\" />
+    <Folder Include="Repositories\Product\" />
+  </ItemGroup>
+
 </Project>
