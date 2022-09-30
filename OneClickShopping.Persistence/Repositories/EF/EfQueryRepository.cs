@@ -1,17 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OneClickShopping.Application.Repositories;
 using OneClickShopping.Application.Repositories.EF;
+using OneClickShopping.Domain.Entities.Common;
 using OneClickShopping.Persistence.Context;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OneClickShopping.Persistence.Repositories.EF
 {
-    public class EfQueryRepository<T> : IEfQueryRepository<T> where T : class
+    public class EfQueryRepository<T> : IEfQueryRepository<T> where T :BaseEntity
     {
         readonly OneClickShoppingContext _shoppingContext;
         public EfQueryRepository(OneClickShoppingContext shoppingContext)
@@ -19,21 +14,39 @@ namespace OneClickShopping.Persistence.Repositories.EF
             _shoppingContext = shoppingContext;
         }
         public DbSet<T> Table => _shoppingContext.Set<T>();
-        public IQueryable<T> GetAll()
+        public IQueryable<T> GetAll(bool tracking)
         {
-            return Table.AsNoTracking();
+
+            if (!tracking)
+                return Table.AsNoTracking();
+            else
+                return Table.AsQueryable();
         }
-        public IQueryable<T> GetAll(Expression<Func<T, bool>> expression)
+        public IQueryable<T> GetAll(Expression<Func<T, bool>> expression, bool tracking)
         {
-            return Table.Where(expression).AsNoTracking();
+
+            if (!tracking)
+                return Table.Where(expression).AsNoTracking();
+            else
+                return Table.Where(expression).AsQueryable();
+
         }
-        public async Task<T> GetByIdAsync(string id)
+        public async Task<T> GetByIdAsync(int id, bool tracking)
         {
-            return await Table.FindAsync(id);
+
+            var query = Table.AsQueryable();
+            if (!tracking)
+                query.AsNoTracking();
+
+           return await query.FirstOrDefaultAsync(x=> x.Id==id);
         }
-        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> expression)
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> expression, bool tracking)
         {
-            return await Table.FirstOrDefaultAsync(expression);
+            var query = Table.AsQueryable();
+            if (!tracking)
+                query.AsNoTracking();
+
+            return await query.FirstOrDefaultAsync(expression);
         }
     }
 }

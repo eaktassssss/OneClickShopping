@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OneClickShopping.Domain.Entities.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace OneClickShopping.Application.Repositories.EF
 {
-    public interface IEfQueryRepository<T> : IRepository<T> where T : class
+    public interface IEfQueryRepository<T> : IRepository<T> where T  :BaseEntity
     {
-        IQueryable<T> GetAll();
-        IQueryable<T> GetAll(Expression<Func<T, bool>> expression);
-        Task<T> GetSingleAsync(Expression<Func<T, bool>> expression);
-        Task<T> GetByIdAsync(string id);
+        IQueryable<T> GetAll(bool tracking = false);
+        IQueryable<T> GetAll(Expression<Func<T, bool>> expression, bool tracking=false);
+        Task<T> GetSingleAsync(Expression<Func<T, bool>> expression, bool tracking=false);
+        Task<T> GetByIdAsync(int id, bool tracking=false);
     }
 }

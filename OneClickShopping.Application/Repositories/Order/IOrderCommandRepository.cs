@@ -4,6 +4,7 @@ using OneClickShopping.Domain.Entities;
 namespace OneClickShopping.Application.Repositories.Order
 {
     public  interface IOrderCommandRepository:IEfCommandRepository<Orders>
+   
     {
     }
 }

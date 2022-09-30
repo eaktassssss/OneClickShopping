@@ -16,11 +16,8 @@ namespace OneClickShopping.Persistence.Context
         public OneClickShoppingContext(DbContextOptions option) : base(option)
         {
         }
-
         public DbSet<Categories> Categories { get; set; }
         public DbSet<Products> Products { get; set; }
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
