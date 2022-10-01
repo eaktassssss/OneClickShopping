@@ -29,6 +29,8 @@ namespace OneClickShopping.Persistence.Context
             modelBuilder.Entity<Products>().Property(x => x.CurrentQty).IsRequired();
             modelBuilder.Entity<Products>().Property(x => x.CreatedDate).HasDefaultValue(DateTime.Now);
             modelBuilder.Entity<Products>().Property(x => x.IsDeleted).HasDefaultValue(false);
+            modelBuilder.Entity<Products>().Property(x => x.StockStatus).HasDefaultValue(false);
+            modelBuilder.Entity<Products>().Property(x => x.Description).HasMaxLength(500);
             #endregion
 
             #region Category

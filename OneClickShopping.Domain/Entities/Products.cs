@@ -14,5 +14,7 @@ namespace OneClickShopping.Domain.Entities
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
         public Categories Categories { get; set; }
+        public string Description { get; set; }
+        public bool StockStatus { get; set; }
     }
 }

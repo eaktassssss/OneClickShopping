@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using OneClickShopping.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,13 @@ namespace OneClickShopping.Application.Features.CQRS.Commands.Product.CreateProd
 {
     public  class CreateProductCommandRequest:IRequest<CreateProductCommandResponse>
     {
-        public int Id { get; set; }
+
         public string Name { get; set; }
         public int CurrentQty { get; set; }
         public decimal Price { get; set; }
         public int CategoryId { get; set; }
+        public string Description { get; set; }
+        public bool StockStatus { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime? DeletedDate { get; set; }

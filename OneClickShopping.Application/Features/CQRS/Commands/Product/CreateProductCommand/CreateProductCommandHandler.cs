@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace OneClickShopping.Application.Features.CQRS.Commands.Product.CreateProductCommand
 {
+
     public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest, CreateProductCommandResponse>
     {
 
@@ -28,9 +29,11 @@ namespace OneClickShopping.Application.Features.CQRS.Commands.Product.CreateProd
             product.CurrentQty = request.CurrentQty;
             product.IsDeleted = false;
             product.CreatedDate = DateTime.Now;
+            product.Description = "Bu ürün bu ülke için gönderildi";
+            product.StockStatus = request.StockStatus;
             var result = await _productCommandRepository.AddAsync(product);
             var response = new CreateProductCommandResponse();
-            if (response == null)
+            if (result == null)
             {
                 return response;
             }
@@ -41,6 +44,8 @@ namespace OneClickShopping.Application.Features.CQRS.Commands.Product.CreateProd
                 response.Price = result.Price;
                 response.CurrentQty = result.CurrentQty;
                 response.CreatedDate = DateTime.Now;
+                response.Description = result.Description;
+                response.StockStatus = result.StockStatus;
                 return response;
             }
 
