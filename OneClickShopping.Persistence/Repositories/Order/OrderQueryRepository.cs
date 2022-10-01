@@ -5,7 +5,7 @@ using OneClickShopping.Persistence.Repositories.EF;
 
 namespace OneClickShopping.Application.Repositories.Order
 {
-    public class OrderQueryRepository : EfQueryRepository<Orders>
+    public class OrderQueryRepository : EfQueryRepository<Orders>, IOrderQueryRepository
     {
         private readonly OneClickShoppingContext _oneClickShoppingContext;
         public OrderQueryRepository(OneClickShoppingContext oneClickShoppingContext) : base(oneClickShoppingContext)

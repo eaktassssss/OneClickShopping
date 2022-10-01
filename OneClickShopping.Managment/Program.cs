@@ -1,9 +1,11 @@
 
 #region Services
+using OneClickShopping.Application;
 using OneClickShopping.Persistence;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddPersistenceServiceReg(builder.Configuration);
+builder.Services.AddApplicationServiceReg();
 #endregion
 
 

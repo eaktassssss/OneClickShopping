@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OneClickShopping.Application.Repositories.EF;
+using OneClickShopping.Domain.Entities.Common;
 using OneClickShopping.Persistence.Context;
 
 namespace OneClickShopping.Persistence.Repositories.EF
 {
-    public class EfCommandRepository<T> : IEfCommandRepository<T> where T : class
+    public class EfCommandRepository<T> : IEfCommandRepository<T> where T : BaseEntity
     {
         readonly OneClickShoppingContext _shoppingContext;
         public EfCommandRepository(OneClickShoppingContext shoppingContext)

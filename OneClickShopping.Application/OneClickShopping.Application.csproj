@@ -11,7 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\CQRS\Commands\Category\" />
+    <Folder Include="Features\CQRS\Commands\Order\" />
+    <Folder Include="Features\CQRS\Queries\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>
