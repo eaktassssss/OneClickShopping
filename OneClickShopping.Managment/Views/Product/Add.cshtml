@@ -1,10 +1,16 @@
-﻿@using OneClickShopping.Application.Features.CQRS.Commands.CreateProductCommand
+﻿@using OneClickShopping.Application.Features.CQRS.Commands.Product.CreateProductCommand
 @model CreateProductCommandRequest
 @{
     ViewData["Title"] = "Add";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-  <div class="container-fluid">
+     <div class="page-body">
+                <div class="title-header">
+                    <h5>Add New Product</h5>
+                </div>
+
+                <!-- New Product Add Start -->
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
                             <div class="row">
