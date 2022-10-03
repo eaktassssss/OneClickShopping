@@ -47,5 +47,6 @@ namespace OneClickShopping.Application.Features.CQRS.Commands.Product.UpdateProd
             }
 
         }
+
     }
 }
