@@ -1,16 +1,16 @@
-﻿@using OneClickShopping.Application.Features.CQRS.Commands.Product.CreateProductCommand
-@model CreateProductCommandRequest
+﻿@using OneClickShopping.Application.Features.CQRS.Queries.Product.GetByIdProduct
+@model GetByIdProductQueryResponse
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Update";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="page-body">
     <div class="title-header">
-        <h5>Add New Product</h5>
+        <h5>Ürün Düzenleme</h5>
     </div>
     <div class="container-fluid">
         <div class="row">
-            <form class="theme-form theme-form-2 mega-form" asp-action="Add" asp-controller="Product">
+            <form class="theme-form theme-form-2 mega-form" asp-action="Update" asp-controller="Product">
                 <div class="col-12">
                     <div class="row">
                         <div class="col-sm-12">
@@ -19,8 +19,7 @@
                                     <div class="card-header-2">
                                         <h5>Ürün Kaydı</h5>
                                     </div>
-
-
+                                    <input asp-for="Id" type="hidden">
                                     <div class="row">
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-2 mb-0">
@@ -38,14 +37,14 @@
                                                     <option value="1">Electronics</option>
                                                     <option value=2>TV & Appliances</option>
                                                     <option value=3>Home & Furniture</option>
-                                                   
+
                                                 </select>
                                             </div>
                                         </div>
 
-                                            <div class="mb-4 row align-items-center">
+                                        <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-2 mb-0">
-                                               Fiyat
+                                                Fiyat
                                             </label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" asp-for="Price" type="text"
@@ -53,9 +52,9 @@
                                             </div>
                                         </div>
 
-                                       <div class="mb-4 row align-items-center">
+                                        <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-2 mb-0">
-                                               Miktar
+                                                Miktar
                                             </label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" asp-for="CurrentQty" type="text"
@@ -67,7 +66,7 @@
                                 </div>
                             </div>
 
-                             <div class="card">
+                            <div class="card">
                                 <div class="card-body">
                                     <div class="card-header-2">
                                         <h5>Açıklama</h5>
@@ -76,80 +75,80 @@
 
                                     <div class="row">
                                         <div class="mb-4 row align-items-center">
-                                           <textarea asp-for="Description" rows=10></textarea>
+                                            <textarea asp-for="Description" rows=10></textarea>
                                         </div>
                                     </div>
 
                                 </div>
                             </div>
-          @*                  <div class="card">
+                            @*                  <div class="card">
                                 <div class="card-body">
-                                    <div class="card-header-2">
-                                        <h5>Product Images</h5>
-                                    </div>
+                                <div class="card-header-2">
+                                <h5>Product Images</h5>
+                                </div>
 
 
-                                    <div class="row">
-                                        <div class="mb-4 row align-items-center">
-                                            <label class="col-sm-2 col-form-label form-label-title">Images</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control form-choose" type="file"
-                                                       id="formFileMultiple" multiple>
-                                            </div>
-                                        </div>
+                                <div class="row">
+                                <div class="mb-4 row align-items-center">
+                                <label class="col-sm-2 col-form-label form-label-title">Images</label>
+                                <div class="col-sm-10">
+                                <input class="form-control form-choose" type="file"
+                                id="formFileMultiple" multiple>
+                                </div>
+                                </div>
 
-                                        <div class="row align-items-center">
-                                            <label class="col-sm-2 col-form-label form-label-title">
-                                                Thumbnail
-                                                Image
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control form-choose" type="file"
-                                                       id="formFileMultiple1" multiple>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="row align-items-center">
+                                <label class="col-sm-2 col-form-label form-label-title">
+                                Thumbnail
+                                Image
+                                </label>
+                                <div class="col-sm-10">
+                                <input class="form-control form-choose" type="file"
+                                id="formFileMultiple1" multiple>
+                                </div>
+                                </div>
+                                </div>
 
                                 </div>
-                            </div>*@
+                                </div>*@
 
-                          @*  <div class="card">
+                            @*  <div class="card">
                                 <div class="card-body">
-                                    <div class="card-header-2">
-                                        <h5>Product Videos</h5>
-                                    </div>
+                                <div class="card-header-2">
+                                <h5>Product Videos</h5>
+                                </div>
 
 
-                                    <div class="row">
-                                        <div class="mb-4 row align-items-center">
-                                            <label class="col-sm-2 col-form-label form-label-title">
-                                                Video
-                                                Provider
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <select class="js-example-basic-single w-100" name="state">
-                                                    <option>Vimeo</option>
-                                                    <option>Youtube</option>
-                                                    <option>Dailymotion</option>
-                                                    <option>Vimeo</option>
-                                                </select>
-                                            </div>
-                                        </div>
+                                <div class="row">
+                                <div class="mb-4 row align-items-center">
+                                <label class="col-sm-2 col-form-label form-label-title">
+                                Video
+                                Provider
+                                </label>
+                                <div class="col-sm-10">
+                                <select class="js-example-basic-single w-100" name="state">
+                                <option>Vimeo</option>
+                                <option>Youtube</option>
+                                <option>Dailymotion</option>
+                                <option>Vimeo</option>
+                                </select>
+                                </div>
+                                </div>
 
-                                        <div class="row align-items-center">
-                                            <label class="form-label-title col-sm-2 mb-0">
-                                                Video
-                                                Link
-                                            </label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="text"
-                                                       placeholder="Video Link">
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="row align-items-center">
+                                <label class="form-label-title col-sm-2 mb-0">
+                                Video
+                                Link
+                                </label>
+                                <div class="col-sm-10">
+                                <input class="form-control" type="text"
+                                placeholder="Video Link">
+                                </div>
+                                </div>
+                                </div>
 
                                 </div>
-                            </div>*@
+                                </div>*@
 
 
                             <div class="card">
@@ -162,7 +161,7 @@
                                     <div class="row">
                                         <div class="row align-items-center">
                                             <label class="col-sm-2 col-form-label form-label-title">
-                                               Stok Durumu
+                                                Stok Durumu
                                             </label>
                                             <div class="col-sm-10">
                                                 <select class="js-example-basic-single w-100" asp-for="StockStatus">
@@ -185,7 +184,7 @@
 
                                     <div class="row">
                                         <div class="mb-4 row align-items-center">
-                                           <button  type="submit">Kaydet</button>
+                                            <button type="submit">Kaydet</button>
                                         </div>
                                     </div>
 

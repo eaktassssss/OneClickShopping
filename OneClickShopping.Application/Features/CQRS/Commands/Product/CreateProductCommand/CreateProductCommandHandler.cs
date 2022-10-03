@@ -29,7 +29,7 @@ namespace OneClickShopping.Application.Features.CQRS.Commands.Product.CreateProd
             product.CurrentQty = request.CurrentQty;
             product.IsDeleted = false;
             product.CreatedDate = DateTime.Now;
-            product.Description = "Bu ürün bu ülke için gönderildi";
+            product.Description =request.Description;
             product.StockStatus = request.StockStatus;
             var result = await _productCommandRepository.AddAsync(product);
             var response = new CreateProductCommandResponse();
